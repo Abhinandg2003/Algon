@@ -1,0 +1,550 @@
+/* ════════════════════════════════════════════════════════════
+   CASE STUDIES v2  —  real data
+   ════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════
+   CASE STUDIES — performance-first rewrite
+   All hover effects: pure CSS :hover, no JS state
+   ═══════════════════════════════════════════════════ */
+
+.sl-overview {
+  position: relative;
+  background: #fcfcf7;
+  padding: 120px 7vw 140px;
+  overflow: hidden;
+}
+
+.sl-overview-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.sl-ov-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.sl-ov-card {
+  position: relative;
+  border-radius: 5px;
+  background: #f2f2f2;
+  border: 0;
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s;
+}
+
+.sl-ov-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.sl-ov-burst {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  width: 110px;
+  height: 110px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sl-ov-card-body {
+  position: relative;
+  z-index: 1;
+  padding: 36px 32px 72px;
+}
+
+.sl-ov-title,
+.sl-ov-desc,
+.sl-ov-tagline,
+.sl-ov-points,
+.sl-ov-industries {
+  position: relative;
+  z-index: 2;
+}
+
+.sl-ov-num {
+  position: absolute;
+  z-index: 0;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  margin-bottom: 14px;
+  opacity: 0.15;
+}
+
+.sl-ov-title {
+  font-size: clamp(35px, 6vw, 50px);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: #050508;
+  margin: 0 0 12px;
+  max-width: 10ch;
+  z-index: 2;
+}
+
+.sl-ov-tagline {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+}
+
+.sl-ov-desc {
+  font-size: 18px;
+  line-height: 1.72;
+  font-weight: 400;
+  color: #050508;
+  margin: 0 0 20px;
+  max-width: 30ch;
+}
+
+.sl-ov-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.sl-ov-point {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-size: 12px;
+  font-weight: 300;
+  color: #374151;
+}
+
+.sl-ov-industries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sl-ov-ind {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+  border: 1px solid currentColor;
+  padding: 3px 9px;
+}
+
+.sl-ov-bar {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 0;
+  opacity: 0.7;
+}
+
+
+.cs2-section {
+  position: relative;
+  background: #050508;
+  padding: 150px 6vw 130px;
+  overflow: hidden;
+}
+.cs2-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ── Spinning rings: GPU-only, isolated layer ── */
+.cs2-rings {
+  display: flex;
+  align-items: center;
+}
+.cs2-ring {
+  will-change: transform;
+  animation: cs2spin 10s linear infinite;
+}
+.cs2-ring--sm { width: 10%; height: 10%; }
+.cs2-ring--lg { width: 20%; height: 20%; }
+@keyframes cs2spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Head ── */
+.cs2-head { margin-bottom: 56px; }
+.cs2-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.cs2-title {
+  font-size: clamp(38px, 5vw, 68px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #fcfcf7;
+  margin: 0;
+}
+
+/* ── Grid ── */
+.cs2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  gap: 12px;
+  margin-bottom: 44px;
+}
+
+/* ── Card ── */
+.cs2-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  cursor: pointer;
+  text-decoration: none;
+  contain: layout style paint;
+  /* Static shadow — no transition, no per-frame repaint */
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 24px 60px rgba(0,0,0,0.55);
+  /* outline is compositor-only unlike box-shadow */
+  outline: 1px solid transparent;
+  transition: outline-color 0.4s;
+}
+
+/* Border glow: pseudo-element, compositor-friendly */
+.cs2-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: border-color 0.4s, opacity 0.4s;
+  z-index: 4;
+  pointer-events: none;
+}
+.cs2-card:hover::after {
+  border-color: var(--accent);
+  opacity: 0.3;
+}
+.cs2-card:hover {
+  outline-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  /* no box-shadow change on hover = no repaint */
+}
+
+/* ── Image ── */
+.cs2-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+/* Overlay: opacity transition instead of background — GPU composited */
+.cs2-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* base gradient baked in, darker version on hover via opacity */
+  background: linear-gradient(to top,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.32) 50%,
+    rgba(0,0,0,0) 100%);
+  transition: opacity 0.6s ease;
+}
+/* Hover darkens via a second pseudo-element on the card itself */
+.cs2-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top,
+    rgba(0,0,0,0.38) 0%,
+    rgba(0,0,0,0.28) 0%,
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+.cs2-card:hover::before { opacity: 1; }
+
+.cs2-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  /* filter removed from transition — opacity overlay handles the darkening */
+  filter: saturate(0.72) brightness(0.82);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  /* NO will-change here — only activate on hover via :hover rule below */
+}
+.cs2-card:hover .cs2-img {
+  will-change: transform;          /* activate GPU layer ONLY during hover */
+  transform: scale(1.06) translateZ(0);
+  /* brightness handled by ::before overlay — no filter transition needed */
+}
+
+/* ── Scanlines: pure CSS, zero DOM weight ── */
+.cs2-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ── Corner mark ── */
+.cs2-corner {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* ── Top bar ── */
+.cs2-topbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 22px 22px 0;
+}
+.cs2-num {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  font-weight: 500;
+}
+.cs2-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Bottom ── */
+.cs2-bottom {
+  position: relative;
+  z-index: 3;
+  padding: 0 20px 18px;
+}
+
+/* Tagline: opacity + translateY instead of max-height — no layout recalc */
+.cs2-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.cs2-card:hover .cs2-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cs2-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cs2-client {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  color: #fcfcf7;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+.cs2-stat {
+  font-size: 12.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.cs2-stat-label {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  text-transform: lowercase;
+}
+
+/* CTA: opacity + scale, no layout */
+.cs2-cta {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 10px;
+  opacity: 0;
+  transform: scale(0.65) translateY(8px);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.cs2-card:hover .cs2-cta {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Tags: opacity + translateY instead of max-height */
+.cs2-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.cs2-card:hover .cs2-tags {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cs2-tag {
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 40px;
+  border: 1px solid;
+  white-space: nowrap;
+  color: #000;
+  background: #ccc;
+}
+
+/* Accent line: scaleX only, transform-origin left */
+.cs2-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0.72;
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  /* No permanent will-change */
+}
+.cs2-card:hover .cs2-line {
+  will-change: transform;          /* GPU layer only when animating */
+  transform: scaleX(1);
+}
+
+/* ── Footer ── */
+.cs2-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+.cs2-footer-link {
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fcfcf7;
+  text-decoration: none;
+  background: linear-gradient(135deg, #0050d4 0%, #298dff 50%, #0050d4 100%);
+  transition: filter 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow:
+    0 10px 30px rgba(29,126,168,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+  will-change: transform;
+}
+.cs2-footer-link::before {
+  content: "";
+  position: absolute;
+  top: -250%; left: -40%;
+  width: 45%; height: 320%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.08) 35%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0.08) 65%,
+    transparent 100%);
+  transform: rotate(24deg) translateX(-250%);
+  animation: cs2Shimmer 3.8s linear infinite;
+  pointer-events: none;
+}
+.cs2-footer-link > * { position: relative; z-index: 2; }
+.cs2-footer-link:hover {
+  filter: brightness(0.82);
+  transform: translateY(-1px);
+  color: #fcfcf7;
+}
+.cs2-footer-link:active { transform: translateY(0); filter: brightness(0.78); }
+@keyframes cs2Shimmer {
+  0%   { transform: rotate(20deg) translateX(-260%); }
+  100% { transform: rotate(20deg) translateX(520%); }
+}
+.cs2-footer-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.25s;
+}
+.cs2-footer-link:hover .cs2-footer-arrow { transform: translateX(4px); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cs2-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: unset;
+  }
+  .cs2-card { min-height: 250px; }
+}
+@media (max-width: 640px) {
+  .cs2-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+    gap: 16px;
+  }
+  .cs2-card { min-height: 250px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs2-ring,
+  .cs2-img,
+  .cs2-line,
+  .cs2-cta,
+  .cs2-tags,
+  .cs2-sub { transition: none; animation: none; }
+}
+
+@keyframes slowRotate {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(540deg);
+  }
+}
+
+.book-rotate {
+  animation: slowRotate 38s linear infinite;
+  transform-origin: center center;
+}

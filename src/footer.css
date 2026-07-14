@@ -1,0 +1,60 @@
+/* ════════════════════════════════════════════════════════════
+   FOOTER — performance rewrite
+   - Marquee is a pure CSS transform animation (no rAF loop ever
+     running on the main thread).
+   - Link hovers are :hover rules (no JS mouseenter/mouseleave,
+     no per-render inline-style allocation).
+   ════════════════════════════════════════════════════════════ */
+
+.footer-marquee-track {
+  display: flex;
+  width: max-content;
+  /* Translating exactly -50% loops seamlessly because the track
+     content is duplicated exactly twice (see Footer.jsx). */
+  animation: footer-marquee 26s linear infinite;
+  will-change: transform;
+}
+
+
+
+@keyframes footer-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause while off-screen (toggled via IntersectionObserver in Footer.jsx)
+   so the animation isn't even ticking on the compositor when nobody
+   can see it. */
+.footer-marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.footer-link:hover {
+  color: #fff;
+}
+
+.footer-subscribe-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 16px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+.footer-subscribe-btn[data-sent="true"] {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee-track {
+    animation: none;
+  }
+}

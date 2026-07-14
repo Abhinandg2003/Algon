@@ -1,0 +1,434 @@
+/* html,
+
+
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+}
+
+#scroll-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-grid {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 6vw;
+  z-index: 2;
+} */
+
+/* Text side */
+/* .hero-text {
+  color: white;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+  margin-top: 12px;
+}
+
+/* 3D side */
+/* .hero-3d {
+  position: relative;
+  height: 100vh;
+} */ 
+
+/* Tablet & Mobile */
+/* @media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 60vh;
+    gap: 4rem;
+    padding-top: 15vh;
+  }
+
+  .hero-3d {
+    height: 60vh;
+  }
+}
+
+
+.canvas-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw; 
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+} */
+
+
+/* .bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 50% 100%,
+    #242424 0%,
+    #181818 35%,
+    #121212 60%,
+    #060606 80%,
+    #000000 100%
+  );
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
+
+
+
+
+/* @font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+} */
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import "tailwindcss"; */
+
+
+
+:root {
+  --font-roboto: "Roboto", sans-serif;
+}
+
+.robotofont {
+  font-family: var(--font-roboto);
+}
+
+
+:root {
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+
+@font-face {
+  font-family: 'DisplayFont';
+  src: url('./assets/fonts/NeueMontreal-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'DisplayFont';
+  src: url('./assets/fonts/NeueMontreal-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: 'DisplayFont';
+  src: url('./assets/fonts/NeueMontreal-Medium.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'DisplayFont';
+  src: url('./assets/fonts/NeueMontreal-Medium.otf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'DisplayFont';
+  src: url('./assets/fonts/NeueMontreal-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+h1, h2, h3 {
+  font-family: 'DisplayFont', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+
+
+html, body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  height: auto;
+  overflow: auto;
+}
+
+
+html, body {
+  height: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-300 { transition-duration: 300ms; }
+.duration-700 { transition-duration: 700ms; }
+.duration-1000 { transition-duration: 1000ms; }
+.backdrop-blur-lg { backdrop-filter: blur(16px); }
+.scale-125 { transform: scale(1.25); }
+.scale-150 { transform: scale(1.5); }
+.opacity-70 { opacity: 0.7; }
+.opacity-50 { opacity: 0.5; }
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #000;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.mask-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ab-scroll-indicator {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 990;
+  pointer-events: none;
+}
+
+.ab-scroll-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.8;
+}
+
+.ab-scroll-arrow {
+  width: 48px;
+  height: 14px;
+  stroke: rgba(128,128,128);
+  stroke-width: 2.8;
+  fill: none;
+}
+
+.site {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background: white;
+  padding: 10vh 10vw;
+}
+
+.splash-bg {
+  position: fixed;
+  inset: 0;
+  background: #050508;
+  z-index: 2;
+}
+
+
+.loader {
+  width: 280px;
+  text-align: center;
+  color: white;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.loader-text {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 100%;
+  background: white;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+
+.scroll-indicator {
+  pointer-events: none;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid rgba(255,255,255,0.8);
+  border-bottom: 2px solid rgba(255,255,255,0.8);
+  transform: rotate(45deg);
+  animation: arrowMove 1.8s infinite;
+  opacity: 0;
+}
+
+.arrow.delay {
+  animation-delay: 0.25s;
+}
+
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+.touch-scroll-fix {
+  touch-action: pan-y;
+}
+
+@keyframes arrowMove {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes burger-open-top {
+  0%   { transform: translate(0,0) rotate(0); }
+  50%  { transform: translate(0px, 3.25px) rotate(0); }
+  100% { transform: translate(0px, 3.25px) rotate(45deg); }
+}
+
+@keyframes burger-open-bottom {
+  0%   { transform: translate(0,0) rotate(0); }
+  50%  { transform: translate(0px, -3.25px) rotate(0); }
+  100% { transform: translate(0px, -3.25px) rotate(-45deg); }
+}
+
+@keyframes burger-close-top {
+  0%   { transform: translate(0px, 3.25px) rotate(45deg); }
+  50%  { transform: translate(0px, 3.25px) rotate(0); }
+  100% { transform: translate(0,0) rotate(0); }
+}
+
+@keyframes burger-close-bottom {
+  0%   { transform: translate(0px, -3.25px) rotate(-45deg); }
+  50%  { transform: translate(0px, -3.25px) rotate(0); }
+  100% { transform: translate(0,0) rotate(0); }
+}
