@@ -18,6 +18,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FAQ_Section from "../components/ui/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,10 +216,7 @@ function CareersHero({ onExplore }) {
 
   return (
     <section ref={heroRef} className="cr-hero">
-      <div className="ab-grid-neon" />
       <div className="ab-grain" />
-      <div className="ab-orb ab-orb--hero-r" />
-      <div className="ab-orb ab-orb--hero-l" />
 
       {/* Ghost text */}
       <div className="cr-hero-ghost" aria-hidden="true">WORK</div>
@@ -249,20 +247,24 @@ function CareersHero({ onExplore }) {
       {/* Stats bar */}
       <div className="cr-hero-stats">
         {[
-          { num: "4", label: "Open roles" },
-          { num: "3+", label: "Years building" },
-          { num: "50+", label: "Projects shipped" },
-          { num: "100%", label: "Remote-friendly" },
+          { num: "3", label: "Open roles", labelLines: ["Open", "Roles"] },
+          { num: "3+", label: "Years building", labelLines: ["Years", "Building"] },
+          { num: "50+", label: "Projects shipped", labelLines: ["Projects", "Shipped"] },
+          { num: "100%", label: "Remote-friendly", labelLines: ["Remote", "Friendly"] },
         ].map((s) => (
           <div key={s.label} className="cr-stat">
             <span className="cr-stat-num">{s.num}</span>
-            <span className="cr-stat-label">{s.label}</span>
+            <span className="cr-stat-label">
+              {s.labelLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </span>
           </div>
         ))}
       </div>
 
       {/* Marquee */}
-      <div className="ab-marq-wrap">
+      {/* <div className="ab-marq-wrap">
         <div ref={marqRef} className="ab-marq-track">
           {[...Array(4)].map((_, g) =>
             ["Web Development", "Design", "Marketing", "HR", "Kerala", "India", "Remote", "Senior Team Only", "Ownership Culture", "Real Projects"].map((s, i) => (
@@ -273,7 +275,7 @@ function CareersHero({ onExplore }) {
             )),
           )}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -310,7 +312,7 @@ function PositionCard({ pos, index, onApply }) {
     <div ref={cardRef} className="cr-pos-card" style={{ "--pos-accent": pos.accent }}>
       <div className="cr-pos-top">
         <div className="cr-pos-left">
-          <div className="cr-pos-accent-dot" />
+          {/* <div className="cr-pos-accent-dot" /> */}
           <div>
             <h3 className="cr-pos-title">{pos.title}</h3>
             <div className="cr-pos-meta">
@@ -334,11 +336,11 @@ function PositionCard({ pos, index, onApply }) {
         </div>
       </div>
 
-      <div className="cr-pos-tags">
+      {/* <div className="cr-pos-tags">
         {pos.tags.map((t) => (
           <span key={t} className="cr-pos-tag">{t}</span>
         ))}
-      </div>
+      </div> */}
 
       <div ref={bodyRef} className="cr-pos-body" style={{ height: 0, opacity: 0 }}>
         <p className="cr-pos-summary">{pos.summary}</p>
@@ -360,9 +362,9 @@ function PositionCard({ pos, index, onApply }) {
             </ul>
           </div>
         </div>
-        <button className="cr-pos-apply-inline" onClick={() => onApply(pos.id)}>
+        {/* <button className="cr-pos-apply-inline" onClick={() => onApply(pos.id)}>
           Apply for this role →
-        </button>
+        </button> */}
       </div>
 
       <div className="cr-pos-bar" />
@@ -373,13 +375,10 @@ function PositionCard({ pos, index, onApply }) {
 function OpenPositions({ onApply, sectionRef }) {
   return (
     <section ref={sectionRef} className="cr-positions-section">
-      <div className="ab-grid-bg" />
       <div className="ab-grain" />
-      <div className="ab-orb cr-orb--pos" />
 
       <div className="cr-positions-inner">
         <div className="cr-positions-head">
-          <p className="ab-eyebrow">Join the team</p>
           <h2 className="ab-section-title">
             Open roles. <br />Real ownership.
           </h2>
@@ -565,9 +564,7 @@ function ApplicationForm({ defaultRole, formRef: scrollRef }) {
 
   return (
     <section ref={sectionRef} className="ct-form-section" id="apply-form">
-      <div className="ab-grid-bg" />
       <div className="ab-grain" />
-      <div className="ab-orb ct-orb--form" />
 
       <div ref={scrollRef} className="ct-form-inner">
         {/* Left */}
@@ -785,7 +782,7 @@ export default function CareersPage() {
         }
         .ab-section-title {
           font-size:clamp(32px,4.5vw,66px);
-          font-weight:400; line-height:1.05; letter-spacing:-0.03em; color:#fff; margin:0;
+          font-weight:500; line-height:1.05; letter-spacing:-0.02em; color:#fff; margin:0;
         }
         .ab-marq-wrap {
           position:relative; z-index:1;
@@ -804,8 +801,8 @@ export default function CareersPage() {
         /* ── HERO ───────────────────────────────────────────── */
         .cr-hero {
           position:relative; background:#050508;
-          min-height:92vh; display:flex; flex-direction:column;
-          justify-content:center; overflow:hidden; padding-top:48px;
+          min-height:100vh; display:flex; flex-direction:column;
+          justify-content:center; overflow:hidden; 
         }
         .cr-hero-ghost {
           position:absolute; bottom:-2%; right:2vw;
@@ -838,12 +835,12 @@ export default function CareersPage() {
         }
         .cr-hero-btn {
           display:inline-flex; align-items:center;
-          padding:17px 40px; background:#fff; color:#050508; border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:0.18em;
-          text-transform:uppercase; font-weight:500;
+          padding:14px 30px; background:rgba(55,55,55,0); color:#fff; border:1px solid rgba(255, 255, 255,1); cursor:pointer;
+           font-size:16px; letter-spacing:0.1em;border-radius:999px;
+          font-weight:500;
           transition:background 0.25s, transform 0.2s;
         }
-        .cr-hero-btn:hover { background:#298dff; color:#fff; transform:translateY(-2px); }
+        .cr-hero-btn:hover { background:#fff; color:#000; }
         .cr-hero-ghost-btn {
           font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:0.14em;
           text-transform:uppercase; color:rgba(255,255,255,0.4); text-decoration:none;
@@ -856,28 +853,30 @@ export default function CareersPage() {
         .cr-hero-stats {
           position:relative; z-index:1;
           display:flex; gap:0;
-          border-top:1px solid rgba(255,255,255,0.07);
+           justify-content:between; 
+          
           margin-top:60px;
         }
         .cr-stat {
           flex:1; padding:24px 7vw 24px;
-          border-right:1px solid rgba(255,255,255,0.07);
-          display:flex; flex-direction:column; gap:4px;
+          
+          display:flex; align-items:center;gap:15px;
         }
         .cr-stat:last-child { border-right:none; }
         .cr-stat-num {
-          font-family:'Syne',sans-serif; font-size:clamp(24px,3vw,40px);
+          font-family:'Syne',sans-serif; font-size:clamp(24px,4vw,60px);
           font-weight:700; color:#fff; letter-spacing:-0.03em;
         }
         .cr-stat-label {
-          font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.18em;
-          text-transform:uppercase; color:rgba(255,255,255,0.28);
+          display:flex; flex-direction:column; gap:2px;
+          font-size:18px; line-height:1.25; letter-spacing:0.1em;
+          color:rgba(255,255,255,01);
         }
 
         /* ── POSITIONS ──────────────────────────────────────── */
         .cr-positions-section {
           position:relative; background:#050508;
-          padding:100px 7vw 110px; border-top:1px solid rgba(255,255,255,0.06);
+          padding:100px 7vw 110px;
           overflow:hidden;
         }
         .cr-orb--pos {
@@ -887,15 +886,15 @@ export default function CareersPage() {
         .cr-positions-inner { position:relative; z-index:1; }
         .cr-positions-head { margin-bottom:60px; max-width:640px; }
         .cr-positions-sub {
-          font-size:16px; line-height:1.78; font-weight:300;
-          color:rgba(255,255,255,0.4); max-width:50ch; margin:16px 0 0;
+          font-size:18px; line-height:1.78; font-weight:300;
+          color:rgba(255,255,255,0.6); max-width:50ch; margin:16px 0 0;
         }
         .cr-positions-list { display:flex; flex-direction:column; }
 
         /* Position card */
         .cr-pos-card {
           position:relative; overflow:hidden;
-          border-top:1px solid rgba(255,255,255,0.07);
+          border-top:1px solid rgba(255,255,255,0.1);
           padding:32px 0;
           transition:background 0.3s;
         }
@@ -915,69 +914,69 @@ export default function CareersPage() {
           font-size:clamp(18px,2vw,26px);
           font-weight:400; color:#fff; margin:0 0 6px; letter-spacing:-0.02em;
         }
-        .cr-pos-meta { display:flex; align-items:center; gap:10px; }
+        .cr-pos-meta { display:flex; align-items:center; gap:5px; }
         .cr-pos-badge {
-           font-size:11px; letter-spacing:0.1em;
-           color:#fcfcf7;
-           background:var(--pos-accent,#298dff);border-radius:999px;
-          border:1px solid var(--pos-accent,rgba(41,141,255,0.4));
-          padding:4px 10px;
+           font-size:15px; font-weight:300;
+          color:rgba(255,255,255,1);
+           
+          
+          padding:4px 0px;
         }
-        .cr-pos-sep { color:rgba(255,255,255,0.6); }
+        .cr-pos-sep { color:rgba(255,255,255,.8); }
         .cr-pos-location {
-          font-family:'DM Sans',sans-serif; font-size:13px; font-weight:300;
-          color:rgba(255,255,255,0.6);
+          font-size:15px; font-weight:300;
+          color:rgba(255,255,255,1);
         }
         .cr-pos-right { display:flex; align-items:center; gap:12px; }
         .cr-pos-expand {
           display:inline-flex; align-items:center; gap:8px;
           padding:10px 20px; background:transparent;
-          border:1px solid rgba(255,255,255,0.12); cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.14em;
-          text-transform:uppercase; color:rgba(255,255,255,0.6);
+           cursor:pointer;
+          font-size:15px; letter-spacing:0.1em;
+          color:rgba(255,255,255,0.7);
           transition:all 0.25s;
         }
-        .cr-pos-expand:hover { border-color:rgba(255,255,255,0.6); color:rgba(255,255,255,0.75); }
+        .cr-pos-expand:hover {  color:rgba(255,255,255,1) ; }
         .cr-pos-expand-icon { font-size:18px; line-height:1; }
         .cr-pos-apply {
           display:inline-flex; align-items:center;
-          padding:11px 28px; background:#fff; color:#050508;
-          border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.18em;
+          padding:11px 28px; background:rgba(0,0,0,0); color:#fff;
+          border:1px solid rgba(255,255,255,1); cursor:pointer; border-radius:999px;
+          font-size:11px; letter-spacing:0.18em;
           text-transform:uppercase; font-weight:500;
           transition:background 0.25s, transform 0.2s;
         }
-        .cr-pos-apply:hover { background:var(--pos-accent,#298dff); color:#fff; transform:translateY(-1px); }
+        .cr-pos-apply:hover { background:#fff; color:#000;  }
 
         .cr-pos-tags {
-          display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; padding-left:28px;
+          display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;
         }
         .cr-pos-tag {
-           font-size:10px; letter-spacing:0.12em;
-           color:rgba(255,255,255,0.6);
-          border:1px solid rgba(255,255,255,0.2); padding:4px 10px; border-radius:999px;
+           font-size:11px; letter-spacing:0.12em;
+           color:rgba(255,255,255,0.8);
+          border:1px solid rgba(255,255,255,0.8); padding:4px 10px; border-radius:999px;
         }
 
         .cr-pos-body { overflow:hidden; padding-left:28px; }
         .cr-pos-summary {
           font-size:15px; line-height:1.78; font-weight:300;
-          color:rgba(255,255,255,0.5); max-width:70ch; margin:20px 0 28px;
+          color:rgba(255,255,255,1); max-width:70ch; margin:20px 0 28px;
         }
         .cr-pos-details-grid {
           display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-bottom:28px;
         }
         .cr-pos-detail-head {
            font-size:15px; font-family:Displayfont; letter-spacing:0.1em;
-          color:rgba(255,255,255,0.6); margin:0 0 14px;
+          color:rgba(255,255,255,1); margin:0 0 14px;
         }
         .cr-pos-list { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
         .cr-pos-list-item {
-          font-size:14px; line-height:1.68; font-weight:300; color:rgba(255,255,255,0.6);
+          font-size:15px; line-height:1.68; font-weight:300; color:rgba(255,255,255,1);
           padding-left:16px; position:relative;
         }
         .cr-pos-list-item::before {
-          content:''; position:absolute; left:0; top:9px;
-          width:5px; height:1px; background:var(--pos-accent,#298dff);
+          content:'·'; position:absolute; left:0; top:0;
+          color:#fff; font-size:15px; line-height:1.68;
         }
         .cr-pos-apply-inline {
           display:inline-flex; align-items:center;
@@ -989,7 +988,7 @@ export default function CareersPage() {
         .cr-pos-apply-inline:hover { opacity:0.7; }
         .cr-pos-bar {
           position:absolute; bottom:0; left:0; width:0; height:1px;
-          background:var(--pos-accent,#298dff);
+          background:#fff;
           transition:width 0.45s ease;
         }
         .cr-pos-card:hover .cr-pos-bar { width:100%; }
@@ -1033,7 +1032,7 @@ export default function CareersPage() {
         /* ── FORM (reused from ContactPage) ────────────────── */
         .ct-form-section {
           position:relative; background:#050508;
-          padding:100px 7vw 120px; border-top:1px solid rgba(255,255,255,0.06);
+          padding:100px 7vw 120px;
           overflow:hidden;
         }
         .ct-orb--form {
@@ -1044,33 +1043,33 @@ export default function CareersPage() {
           position:relative; z-index:1;
           display:grid; grid-template-columns:340px 1fr; gap:0 8vw; align-items:start;
         }
-        .ct-form-left { position:sticky; top:100px; }
+        .ct-form-left { position:sticky; }
         .ct-form-title {
-          font-size:clamp(30px,3.5vw,52px); font-weight:400; line-height:1.05;
+          font-size:clamp(30px,3.7vw,62px); font-weight:500; line-height:1.05;
           letter-spacing:-0.03em; color:#fff; margin:0 0 20px;
         }
         .ct-form-hint {
           font-size:16px; line-height:1.78; font-weight:300;
-          color:rgba(255,255,255,0.5); max-width:32ch; margin:0 0 32px;
+          color:rgba(255,255,255,0.8); max-width:32ch; margin:0 0 32px;
         }
         .ct-form-badges { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
         .ct-badge {
           display:inline-flex; align-items:center; gap:8px;
-          font-size:15px; color:rgba(255,255,255,0.5); font-weight:300;
+          font-size:16px; color:rgba(255,255,255,0.8); font-weight:300;
         }
         .ct-badge-dot {
           width:5px; height:5px; border-radius:50%; flex-shrink:0;
           background:var(--badge,#298dff); box-shadow:0 0 6px var(--badge,#298dff);
         }
         .ct-form-divider {
-          width:100%; height:1px; background:rgba(255,255,255,0.07); margin:0 0 28px;
+          width:100%; height:1px; background:rgba(255,255,255,0.2); margin:0 0 28px;
         }
         .ct-form-note {
-          font-size:15px; line-height:1.7; color:rgba(255,255,255,0.3); margin:0;
+          font-size:15px; line-height:1.7; color:rgba(255,255,255,0.5); margin:0;
         }
         .ct-link {
-          color:rgba(255,255,255,0.65); text-decoration:none;
-          border-bottom:1px solid rgba(255,255,255,0.15);
+          color:rgba(255,255,255,0.8); text-decoration:none;
+          border-bottom:1px solid rgba(255,255,255,0.5);
           transition:color 0.25s, border-color 0.25s;
         }
         .ct-link:hover { color:#fff; border-color:rgba(255,255,255,0.4); }
@@ -1080,19 +1079,20 @@ export default function CareersPage() {
         }
         .ct-field { margin-bottom:28px; }
         .ct-label {
-          display:block; font-size:15px; color:rgba(255,255,255,0.7); margin-bottom:10px;
+          display:block; font-size:15px; color:rgba(255,255,255,0.9); margin-bottom:10px;
         }
         .ct-req { color:#298dff; margin-left:3px; }
+        .ct-opt { color:rgba(255,255,255,0.8); font-size:9px; letter-spacing:0.1em; margin-left:6px; }
         .ct-input, .ct-select, .ct-textarea {
           width:100%; background:rgba(255,255,255,0.03);
-          border:1px solid rgba(255,255,255,0.2); color:#fff; outline:none;
+          border:1px solid rgba(255,255,255,0.6); color:#fff; outline:none;
           font-size:13px; font-weight:300; line-height:1.5;
           transition:border-color 0.25s, background 0.25s;
           -webkit-appearance:none; appearance:none; border-radius:10px;
         }
         .ct-input, .ct-select { padding:14px 16px; border-radius:10px; }
         .ct-textarea { padding:14px 16px; resize:vertical; min-height:120px; }
-        .ct-input::placeholder, .ct-textarea::placeholder { color:rgba(255,255,255,0.4); }
+        .ct-input::placeholder, .ct-textarea::placeholder { color:rgba(255,255,255,0.6); }
         .ct-input:focus, .ct-select:focus, .ct-textarea:focus {
           border-color:rgba(41,141,255,0.45); background:rgba(255,255,255,0.04);
           box-shadow:0 0 0 3px rgba(41,141,255,0.07);
@@ -1107,14 +1107,14 @@ export default function CareersPage() {
         .ct-submit-row { display:flex; flex-direction:column; gap:16px; margin-top:8px; }
         .ct-submit {
           display:inline-flex; align-items:center; justify-content:center;
-          padding:18px 44px; cursor:pointer;
-          background:#fff; color:#050508; border:none;
-          font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:0.18em;
-          text-transform:uppercase; font-weight:500;
+          gap:0; padding:14px 35px; cursor:pointer;border-radius:999px;
+          background:rgba(255,255,255,0); color:#fcfcf7; border:1px solid  rgba(255,255,255,1);
+          font-size:16px; letter-spacing:0.1em;
+          font-weight:400;
           transition:background 0.25s, transform 0.2s;
           align-self:flex-start;
         }
-        .ct-submit:hover:not(:disabled) { background:#298dff; color:#fff; transform:translateY(-1px); }
+        .ct-submit:hover:not(:disabled) { background:#fcfcf7; color:#000; }
         .ct-submit:disabled { opacity:0.6; cursor:not-allowed; }
         .ct-submit-loading { display:flex; align-items:center; gap:10px; }
         .ct-spinner {
@@ -1124,7 +1124,7 @@ export default function CareersPage() {
         }
         @keyframes ct-spin { to { transform:rotate(360deg); } }
         .ct-privacy {
-          font-size:13px; color:rgba(255,255,255,0.22); margin:0; line-height:1.7;
+          font-size:14px; color:rgba(255,255,255,0.3); margin:0; line-height:1.7;
         }
 
         /* ── SUCCESS ─────────────────────────────────────────── */
@@ -1184,6 +1184,7 @@ export default function CareersPage() {
         <OpenPositions onApply={handleApply} sectionRef={positionsRef} />
         {/* <WhyJoin /> */}
         <ApplicationForm defaultRole={selectedRole} formRef={formScrollRef} />
+        <FAQ_Section/>
         <Footer />
       </div>
     </>

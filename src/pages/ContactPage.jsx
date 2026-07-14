@@ -19,7 +19,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Lottie from "lottie-react";
-import animationData from "/src/assets/Circuit.json";
+import animationData from "/src/assets/mail.json";
+import FAQ_Section from "../components/ui/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -192,41 +193,39 @@ function ContactHero() {
 
   return (
     <section ref={heroRef} className="ct-hero">
-      <div className="ab-grid-neon" />
       <div className="ab-grain" />
-      <div className="ab-orb ab-orb--hero-r" />
-      <div className="ab-orb ab-orb--hero-l" />
 
       {/* Ghost text */}
       <div className="ct-hero-ghost" aria-hidden="true">
         TALK
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 px-[7vw] h-[75vh] overflow-visible">
+      <div className="grid grid-cols-1 md:grid-cols-2 px-[7vw] h-[75vh] overflow-visible justify-center items-center">
         <div className="flex-col justify-center mt-10">
           <p ref={eyebrowRef} className="ab-eyebrow">
             Get in touch
           </p>
-          <h1 ref={line1Ref} className="ct-hero-h1">
-            Let's build 
+          <h1 ref={line1Ref} className=" text-center text-7xl md:text-[115px] md:text-start tracking-normal font-medium md:font-normal">
+            Let's build something
           </h1>
-          <h1 ref={line2Ref} className="ct-hero-h1 ">
-            something great.
+          
+          <h1 ref={line2Ref} className="text-center bg-[#265eed] text-7xl md:text-[115px] max-w-fit pb-2 mx-auto md:mx-0 px-2 md:text-left tracking-normal font-medium md:font-normal">
+            great.
           </h1>
           <p ref={subRef} className="ct-hero-sub">
             We take on a select number of new projects each quarter. Tell us
             what you're working on — we'll come back within 24 hours.
           </p>
         </div>
-        <div className="">
-            <div className="   h-[90vh] md:h-[5vh] overflow-visible flex justify-center items-center ">
+        <div className="h-full w-full ">
+            <div className="   h-[40vh] md:h-[80vh] overflow-visible flex justify-center items-center ">
               <Lottie animationData={animationData} />
             </div>
           </div>
       </div>
 
       {/* Marquee */}
-      <div className="ab-marq-wrap">
+      {/* <div className="ab-marq-wrap">
         <div ref={marqRef} className="ab-marq-track">
           {[...Array(4)].map((_, g) =>
             [
@@ -246,7 +245,7 @@ function ContactHero() {
             )),
           )}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -439,9 +438,7 @@ function ContactForm() {
 
   return (
     <section ref={sectionRef} className="ct-form-section">
-      <div className="ab-grid-bg" />
       <div className="ab-grain" />
-      <div className="ab-orb ct-orb--form" />
 
       <div className="ct-form-inner">
         {/* Left — context */}
@@ -965,8 +962,8 @@ export default function ContactPage() {
         /* ── HERO ────────────────────────────────────────────── */
         .ct-hero {
           position:relative; background:#050508;
-          min-height:78vh; display:flex; flex-direction:column;
-          justify-content:center; overflow:hidden; padding-top:88px;
+          min-height:100vh; display:flex; flex-direction:column;
+          justify-content:center; overflow:hidden;
         }
         .ct-hero-ghost {
           position:absolute; bottom:0; right:3vw;
@@ -1006,7 +1003,7 @@ export default function ContactPage() {
         /* ── FORM SECTION ────────────────────────────────────── */
         .ct-form-section {
           position:relative; background:#050508;
-          padding:100px 7vw 120px; border-top:1px solid rgba(255,255,255,0.06);
+          padding:100px 7vw 120px;
           overflow:hidden;
         }
         .ct-orb--form {
@@ -1017,20 +1014,20 @@ export default function ContactPage() {
           position:relative; z-index:1;
           display:grid; grid-template-columns:340px 1fr; gap:0 8vw; align-items:start;
         }
-        .ct-form-left { position:sticky; top:100px; }
+        .ct-form-left { position:sticky; }
         .ct-form-title {
-          font-size:clamp(30px,3.5vw,52px); font-weight:400; line-height:1.05;
+          font-size:clamp(30px,3.7vw,62px); font-weight:500; line-height:1.05;
           letter-spacing:-0.03em; color:#fff; margin:0 0 20px;
         }
         .ct-form-hint {
           font-size:16px; line-height:1.78; font-weight:300;
-          color:rgba(255,255,255,0.5); max-width:32ch; margin:0 0 32px;
+          color:rgba(255,255,255,0.8); max-width:32ch; margin:0 0 32px;
         }
         .ct-form-badges { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
         .ct-badge {
           display:inline-flex; align-items:center; gap:8px;
-          font-size:15px;  
-          color:rgba(255,255,255,0.5); font-weight:300;
+          font-size:16px;  
+          color:rgba(255,255,255,0.8); font-weight:300;
         } 
         .ct-badge-dot {
           width:5px; height:5px; border-radius:50%; flex-shrink:0;
@@ -1038,14 +1035,14 @@ export default function ContactPage() {
           box-shadow:0 0 6px var(--badge,#298dff);
         }
         .ct-form-divider {
-          width:100%; height:1px; background:rgba(255,255,255,0.07); margin:0 0 28px;
+          width:100%; height:1px; background:rgba(255,255,255,0.2); margin:0 0 28px;
         }
         .ct-form-note {
-          font-size:15px; line-height:1.7; color:rgba(255,255,255,0.3); margin:0;
+          font-size:15px; line-height:1.7; color:rgba(255,255,255,0.5); margin:0;
         }
         .ct-link {
-          color:rgba(255,255,255,0.65); text-decoration:none;
-          border-bottom:1px solid rgba(255,255,255,0.15);
+          color:rgba(255,255,255,0.8); text-decoration:none;
+          border-bottom:1px solid rgba(255,255,255,0.5);
           transition:color 0.25s, border-color 0.25s;
         }
         .ct-link:hover { color:#fff; border-color:rgba(255,255,255,0.4); }
@@ -1058,13 +1055,13 @@ export default function ContactPage() {
         .ct-field { margin-bottom:28px; }
         .ct-label {
           display:block; font-size:15px;
-          color:rgba(255,255,255,0.7); margin-bottom:10px;
+          color:rgba(255,255,255,0.9); margin-bottom:10px;
         }
         .ct-req { color:#298dff; margin-left:3px; }
-        .ct-opt { color:rgba(255,255,255,0.4); font-size:9px; letter-spacing:0.1em; margin-left:6px; }
+        .ct-opt { color:rgba(255,255,255,0.8); font-size:9px; letter-spacing:0.1em; margin-left:6px; }
         .ct-input, .ct-select, .ct-textarea {
           width:100%; background:rgba(255,255,255,0.03);
-          border:1px solid rgba(255,255,255,0.2);
+          border:1px solid rgba(255,255,255,0.6);
           color:#fff; outline:none;
          font-size:13px; font-weight:300;
           line-height:1.5;
@@ -1073,7 +1070,7 @@ export default function ContactPage() {
         }
         .ct-input, .ct-select { padding:14px 16px;  border-radius:10px; }
         .ct-textarea { padding:14px 16px; resize:vertical; min-height:120px; }
-        .ct-input::placeholder, .ct-textarea::placeholder { color:rgba(255,255,255,0.4); }
+        .ct-input::placeholder, .ct-textarea::placeholder { color:rgba(255,255,255,0.6); }
         .ct-input:focus, .ct-select:focus, .ct-textarea:focus {
           border-color:rgba(41,141,255,0.45); background:rgba(255,255,255,0.04);
           box-shadow:0 0 0 3px rgba(41,141,255,0.07);
@@ -1096,10 +1093,10 @@ export default function ContactPage() {
         }
         .ct-chip {
           padding:8px 16px;
-          border:1px solid rgba(255,255,255,0.3);
+          border:1px solid rgba(255,255,255,0.6);
           border-radius:20px;
           background:rgba(255,255,255,0.02);
-          color:rgba(255,255,255,0.45);
+          color:rgba(255,255,255,0.7);
            font-size:12px; letter-spacing:0.1em;
            cursor:pointer;
           transition:all 0.22s;
@@ -1134,14 +1131,14 @@ export default function ContactPage() {
         .ct-submit-row { display:flex; flex-direction:column; gap:16px; margin-top:8px; }
         .ct-submit {
           display:inline-flex; align-items:center; justify-content:center;
-          gap:0; padding:18px 44px; cursor:pointer;
-          background:#fff; color:#050508; border:none;
-          font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:0.18em;
-          text-transform:uppercase; font-weight:500;
+          gap:0; padding:14px 35px; cursor:pointer;border-radius:999px;
+          background:rgba(255,255,255,0); color:#fcfcf7; border:1px solid  rgba(255,255,255,1);
+           font-size:16px; letter-spacing:0.1em;
+          font-weight:400;
           transition:background 0.25s, transform 0.2s;
           align-self:flex-start;
         }
-        .ct-submit:hover:not(:disabled) { background:#298dff; transform:translateY(-1px); }
+        .ct-submit:hover:not(:disabled) { background:#fcfcf7; color:#000;  }
         .ct-submit:disabled { opacity:0.6; cursor:not-allowed; }
         .ct-submit-loading { display:flex; align-items:center; gap:10px; }
         .ct-spinner {
@@ -1151,7 +1148,7 @@ export default function ContactPage() {
         }
         @keyframes ct-spin { to { transform:rotate(360deg); } }
         .ct-privacy {
-          font-size:13px; color:rgba(255,255,255,0.22); margin:0; line-height:1.7;
+          font-size:14px; color:rgba(255,255,255,0.3); margin:0; line-height:1.7;
         }
 
         /* ── SUCCESS ─────────────────────────────────────────── */
@@ -1301,7 +1298,7 @@ export default function ContactPage() {
         <ContactHero />
         <ContactForm />
         {/* <InfoStrip /> */}
-        <FaqSection />
+<FAQ_Section/>
         <Footer />
       </div>
     </>

@@ -413,16 +413,16 @@ useEffect(() => {
                             </p> */}
                             <div className="flex flex-wrap gap-3">
                                 {[
-                                    "Web & SaaS",
-                                    "AI Automation",
-                                    "Ecommerce",
-                                    "Brand Systems",
-                                    "3D / Motion",
-                                    "Cybersecurity",
+                                    "• Web & SaaS",
+                                    "• AI Automation",
+                                    "• Ecommerce",
+                                    "• Brand Systems",
+                                    "• 3D / Motion",
+                                    "• Cybersecurity",
                                 ].map((service) => (
                                     <span
                                         key={service}
-                                        className="rounded-full border border-white/15 px-4 py-2 text-[13px] text-white/75"
+                                        className="rounded-full px-4 py-2 text-[15px] text-white"
                                     >
                                         {service}
                                     </span>

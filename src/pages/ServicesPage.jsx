@@ -19,6 +19,7 @@ import Lottie from "lottie-react";
 import animationData from "/src/assets/Circle.json";
 import ScrollIndicator from "../components/ui/ScrollIndicator";
 import ServicesCards from "../components/ui/ServicesCards";
+import FAQ_Section from "../components/ui/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1436,6 +1437,7 @@ export default function ServicesPage() {
         {/* <IntroStatement /> */}
         {/* <ServicesGrid /> */}
         <ServicesCards />
+        <FAQ_Section/>
         {/* <ProcessSection /> */}
         {/* <div className="relative bg-white">
     <img

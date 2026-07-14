@@ -214,7 +214,9 @@ export default function PrivacyPolicy() {
         /* Header */
         .pp-header {
           position: relative; z-index: 1;
-          padding: 120px 7vw 80px;
+          min-height: 100vh;
+          display: flex; flex-direction: column; justify-content: center;
+          padding: 72px 7vw 60px;
           border-bottom: 1px solid rgba(255,255,255,0.07);
         }
         .pp-header-meta {
@@ -233,15 +235,15 @@ export default function PrivacyPolicy() {
           width: 1px; height: 14px; background: rgba(255,255,255,0.15);
         }
         .pp-page-title {
-          font-size: clamp(42px, 7vw, 100px);
-          font-weight: 400; line-height: 1;
-          letter-spacing: -0.04em; color: #fcfcf7;
-          margin: 0 0 28px;
+          font-size: clamp(52px, 8vw, 110px);
+          font-weight: 400; line-height: 0.96;
+          letter-spacing: -0.04em; color: #fff;
+          margin: 0 0 32px;
         }
         .pp-page-sub {
-          font-size: clamp(13px, 1.1vw, 16px);
+          font-size: clamp(13px, 1.1vw, 18px);
           font-weight: 300; line-height: 1.72;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.6);
           max-width: 52ch; margin: 0;
         }
 
@@ -267,13 +269,13 @@ export default function PrivacyPolicy() {
         }
         .pp-num {
           display: block;
-          font-size: 19px; letter-spacing: 0.2em;
-          color: rgba(255,255,255,0.5); text-transform: uppercase;
+          font-size: 22px; letter-spacing: 0.06em;
+          color: rgba(255,255,255,1); text-transform: uppercase;
           margin-bottom: 16px;
         }
         .pp-title {
           font-size: clamp(18px, 1.6vw, 24px);
-          font-weight: 400; letter-spacing: -0.02em;
+          font-weight: 500; letter-spacing: -0.005em;
           color: #fcfcf7; margin: 0;
           line-height: 1.2;
         }
@@ -284,14 +286,14 @@ export default function PrivacyPolicy() {
         }
         .pp-block {}
         .pp-subtitle {
-          font-size: 16px; letter-spacing: 0.18em;
-          color: rgba(255,255,255,0.8); margin: 0 0 12px;
+          font-size: 20px; letter-spacing: 0.04em;
+          color: rgba(255,255,255,1); margin: 0 0 12px;
           font-weight: 400;
         }
         .pp-body {
-          font-size: clamp(14px, 1.05vw, 16px);
-          font-weight: 300; line-height: 1.78;
-          color: rgba(255,255,255,0.55); margin: 0;
+          font-size: clamp(14px, 1.08vw, 18px);
+          font-weight: 300; line-height: 1.78;  
+          color: rgba(255,255,255,0.7); margin: 0;
         }
 
         /* Footer note */
@@ -299,10 +301,10 @@ export default function PrivacyPolicy() {
           position: relative; z-index: 1;
           padding: 0 7vw 80px;
           font-size: 14px; letter-spacing: 0.1em;
-          color: rgba(255,255,255,0.18);
+          color: rgba(255,255,255,0.4);
         }
         .pp-footer-note a {
-          color: rgba(255,255,255,0.38);
+          color: rgba(255,255,255,0.8);
           text-decoration: none; transition: color 0.2s;
         }
         .pp-footer-note a:hover { color: #fcfcf7; }
@@ -318,15 +320,14 @@ export default function PrivacyPolicy() {
             display: flex; align-items: baseline; gap: 16px;
           }
           .pp-num { margin-bottom: 0; }
-          .pp-header { padding: 100px 6vw 60px; }
+          .pp-header { min-height: 80vh; padding: 100px 6vw 60px; }
           .pp-body-wrap { padding: 0 6vw 100px; }
           .pp-footer-note { padding: 0 6vw 60px; }
         }
       `}</style>
 
       <div className="pp-root">
-        <div className="pp-grid-bg" />
-        <div className="pp-grain" />
+
         <Navbar />
 
         <header ref={headerRef} className="pp-header">

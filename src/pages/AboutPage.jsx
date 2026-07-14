@@ -32,6 +32,7 @@ import Rocket from "/src/assets/Leadership Rocket.json";
 import ValuesSectionAbout from "../components/ValuesSectionAbout";
 import CTASectionAbt from "../components/CTASectionAbt";
 import ScrollIndicator from "../components/ui/ScrollIndicator";
+import FAQ_Sectionlight from "../components/ui/FAQLight";
 
 
 

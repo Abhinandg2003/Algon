@@ -31,13 +31,12 @@ export default function NotFound() {
       <h1 style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 400, margin: "0 0 12px", letterSpacing: "-0.03em" }}>
         Page not found.
       </h1>
-      <p style={{ fontSize: 16, color: "rgba(255,255,255,0.4)", marginBottom: 40 }}>
+      <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", marginBottom: 40 }}>
         The page you're looking for doesn't exist or has been moved.
       </p>
-      <Link to="/" className="hover:text-white hover:bg-[#4a6fff] bg-white text-black transition-all duration-300" style={{
-        fontSize: 12,
-        letterSpacing: "0.14em",
-        textTransform: "uppercase",
+      <Link to="/" className="hover:text-black hover:bg-[#fff] bg-white/0 text-white transition-all border border-white rounded-full duration-300" style={{
+        fontSize: 15,
+        letterSpacing: "0.1em",
         textDecoration: "none",
 
         padding: "14px 32px",

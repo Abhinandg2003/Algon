@@ -130,7 +130,7 @@ useEffect(() => {
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:id" element={<BlogDetailPage />} />
             <Route path="/careers" element={<CareersPage />} />
-            <Route path="/3d" element={<Splinescene />} />
+            {/* <Route path="/3d" element={<Splinescene />} /> */}
                <Route path="/privacy" element={<PrivacyPolicy />} />
                   <Route path="/terms" element={<TermsOfService />} />
 <Route path="/work/:id" element={<CaseStudyDetailPage />} />

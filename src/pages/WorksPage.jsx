@@ -24,6 +24,7 @@ import Lottie from "lottie-react";
 import animationData from "/src/assets/laptop.json";
 import { Link } from "react-router-dom";
 import ScrollIndicator from "../components/ui/ScrollIndicator";
+import FAQ_Section from "../components/ui/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 

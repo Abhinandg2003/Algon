@@ -31,23 +31,23 @@ const TESTIMONIALS = [
     quote:
       "Algon Solutions delivered a stunning, highly impressive product perfectly on schedule, exceeding all our expectations at VISAT Group of Institutions.",
     name: "Raju Kurian",
-    role: "Chairman, Visat",
+    role: "Chairman, Visat Group of Institutions",
     link: "https://visat.in",
   },
   {
     id: "t2",
     video:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "/videos/Desire.mp4",
     thumbnail:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
-    logo: "ARC",
-    statValue: "48%",
-    statLabel: "Lower churn",
+      "images/desire thumb.jpg",
+    logo: "/images/clients/logos/desire.png",
+    statValue: "100%",
+    statLabel: "Brand presence",
     quote:
-      "Support tickets dropped almost in half within two months of switching over. Customers just get it now.",
-    name: "Diego Ferreira",
-    role: "Founder, Arc Studio",
-    link: "https://example.com",
+      "Algon built us a strong website with brand presence, AI chatbot support, contact flows, and everything we needed to connect better with students.",
+    name: "Swapna",
+    role: "Co-Founder, Desire Study Abroad",
+    link: "https://desirestudyabroad.com",
   },
   {
     id: "t3",

@@ -234,13 +234,6 @@ export default function TermsOfService() {
           min-height: 100vh;
           font-family: 'DM Sans', sans-serif;
         }
-        .tos-grid-bg {
-          position: fixed; inset: 0; pointer-events: none; z-index: 0;
-          background-image:
-            linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
-            linear-gradient(90deg,rgba(255,255,255,0.016) 1px, transparent 1px);
-          background-size: 64px 64px;
-        }
         .tos-grain {
           position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.022;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -250,7 +243,9 @@ export default function TermsOfService() {
         /* Header */
         .tos-header {
           position: relative; z-index: 1;
-          padding: 120px 7vw 80px;
+          min-height: 100vh;
+          display: flex; flex-direction: column; justify-content: center;
+          padding: 72px 7vw 60px;
           border-bottom: 1px solid rgba(255,255,255,0.07);
         }
         .tos-header-meta {
@@ -269,15 +264,15 @@ export default function TermsOfService() {
           width: 1px; height: 14px; background: rgba(255,255,255,0.15);
         }
         .tos-page-title {
-          font-size: clamp(42px, 7vw, 100px);
-          font-weight: 400; line-height: 1;
-          letter-spacing: 0.02em; color: #fcfcf7;
-          margin: 0 0 28px;
+          font-size: clamp(52px, 8vw, 110px);
+          font-weight: 400; line-height: 0.96;
+          letter-spacing: -0.04em; color: #fff;
+          margin: 0 0 32px;
         }
         .tos-page-sub {
-          font-size: clamp(13px, 1.1vw, 16px);
+          font-size: clamp(13px, 1.1vw, 18px);
           font-weight: 300; line-height: 1.72;
-          color: rgba(255,255,255,0.5);
+          color: rgba(255,255,255,0.6);
           max-width: 52ch; margin: 0;
         }
 
@@ -303,13 +298,13 @@ export default function TermsOfService() {
         }
         .tos-num {
           display: block;
-          font-size: 19px; letter-spacing: 0.2em;
-          color: rgba(255,255,255,0.6); text-transform: uppercase;
+          font-size: 22px; letter-spacing: 0.06em;
+          color: rgba(255,255,255,1); text-transform: uppercase;
           margin-bottom: 16px;
         }
         .tos-title {
           font-size: clamp(18px, 1.6vw, 24px);
-          font-weight: 400; letter-spacing: -0.02em;
+          font-weight: 500; letter-spacing: -0.005em;
           color: #fcfcf7; margin: 0;
           line-height: 1.2;
         }
@@ -320,14 +315,14 @@ export default function TermsOfService() {
         }
         .tos-block {}
         .tos-subtitle {
-          font-size: 18px; letter-spacing: 0.1em; 
+          font-size: 20px; letter-spacing: 0.04em;
           color: rgba(255,255,255,1); margin: 0 0 12px;
           font-weight: 400;
         }
         .tos-body {
-          font-size: clamp(14px, 1.05vw, 16px);
-          font-weight: 100; line-height: 1.78;
-          color: rgba(255,255,255,0.4); margin: 0;
+          font-size: clamp(14px, 1.08vw, 18px);
+          font-weight: 300; line-height: 1.78;
+          color: rgba(255,255,255,0.7); margin: 0;
         }
 
         /* Footer note */
@@ -335,10 +330,10 @@ export default function TermsOfService() {
           position: relative; z-index: 1;
           padding: 0 7vw 80px;
           font-size: 14px; letter-spacing: 0.1em;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.4);
         }
         .tos-footer-note a {
-          color: rgba(255,255,255,0.5);
+          color: rgba(255,255,255,0.8);
           text-decoration: none; transition: color 0.2s;
         }
         .tos-footer-note a:hover { color: #fcfcf7; }
@@ -354,15 +349,13 @@ export default function TermsOfService() {
             display: flex; align-items: baseline; gap: 16px;
           }
           .tos-num { margin-bottom: 0; }
-          .tos-header { padding: 100px 6vw 60px; }
+          .tos-header { min-height: 80vh; padding: 100px 6vw 60px; }
           .tos-body-wrap { padding: 0 6vw 100px; }
           .tos-footer-note { padding: 0 6vw 60px; }
         }
       `}</style>
 
       <div className="tos-root">
-        <div className="tos-grid-bg" />
-        <div className="tos-grain" />
         <Navbar />
 
         <header ref={headerRef} className="tos-header">

@@ -94,7 +94,6 @@ export const POSTS = [
 
 function BlogHero() {
   const heroRef = useRef();
-  const eyebrowRef = useRef();
   const line1Ref = useRef();
   const line2Ref = useRef();
   const marqRef = useRef();
@@ -112,9 +111,9 @@ function BlogHero() {
       };
       raf = requestAnimationFrame(run);
 
-      gsap.set([eyebrowRef.current, line1Ref.current, line2Ref.current], { autoAlpha: 0, y: 60 });
+      gsap.set([line1Ref.current, line2Ref.current], { autoAlpha: 0, y: 60 });
       const tl = gsap.timeline({ delay: 0.1 });
-      tl.to(eyebrowRef.current, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0)
+      tl
         .to(line1Ref.current, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power4.out" }, 0.1)
         .to(line2Ref.current, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power4.out" }, 0.22);
 
@@ -125,24 +124,22 @@ function BlogHero() {
 
   return (
     <section ref={heroRef} className="bl-hero">
-      <div className="ab-grid-neon" />
+      {/* <div className="ab-grid-neon" /> */}
       <div className="ab-grain" />
-      <div className="ab-orb ab-orb--hero-r" />
-      <div className="ab-orb ab-orb--hero-l" />
+      
       <div className="bl-hero-ghost" aria-hidden="true">BLOG</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="pt-[60px] pl-[7vw] max-w-[900px] h-[40vh] md:h-[80vh]">
-          <p ref={eyebrowRef} className="ab-eyebrow">Journal</p>
-          <h1 ref={line1Ref} className="bl-hero-h1">Ideas, craft,</h1>
-          <h1 ref={line2Ref} className="bl-hero-h1">& honest takes.</h1>
+        <div className="pt-[60px] mt-10 pl-[7vw] max-w-[900px] h-[40vh] md:h-[80vh]">
+          <h1 ref={line1Ref} className="bl-hero-h1  text-center md:text-start">Ideas, craft,</h1>
+          <h1 ref={line2Ref} className="bl-hero-h1 text-center md:text-start">& honest takes.</h1>
         </div>
         <div className="flex relative w-[100vw] md:w-[550px] h-[40vh] md:h-[550px] justify-center">
           <Lottie className="flex justify-center" animationData={animationData} />
         </div>
       </div>
 
-      <div className="ab-marq-wrap">
+      {/* <div className="ab-marq-wrap">
         <div ref={marqRef} className="ab-marq-track">
           {[...Array(4)].map((_, g) =>
             ["Design", "Development", "AI & Automation", "Marketing", "Startups", "Kerala", "Real Work", "No Fluff"].map((s, i) => (
@@ -152,7 +149,7 @@ function BlogHero() {
             ))
           )}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -175,7 +172,7 @@ function FeaturedPost({ post, onRead }) {
       </div>
       <div className="bl-featured-content">
         <div className="bl-featured-top">
-          <span className="bl-cat-pill" style={{ "--cat": post.accent }}>{post.category}</span>
+          <span className="bl-cat-pill" >{post.category}</span>
           <span className="bl-featured-badge">Featured</span>
         </div>
         <h2 className="bl-featured-title">{post.title}</h2>
@@ -267,13 +264,13 @@ function BlogGrid({ onRead }) {
 
   return (
     <section ref={sectionRef} className="bl-section">
-      <div className="ab-grid-bg" />
+      {/* <div className="ab-grid-bg" /> */}
       <div className="ab-grain" />
-      <div className="ab-orb bl-orb--grid" />
+      {/* <div className="ab-orb bl-orb--grid" /> */}
 
       <div className="bl-section-inner">
         <div ref={headRef} className="bl-section-head">
-          <p className="ab-eyebrow">All posts</p>
+          {/* <p className="ab-eyebrow">All posts</p> */}
           <h2 className="ab-section-title">From the studio.</h2>
         </div>
 
@@ -345,8 +342,9 @@ export default function BlogsPage() {
           text-transform:uppercase; color:rgba(255,255,255,0); margin:0 0 16px; display:block;
         }
         .ab-section-title {
-          font-size:clamp(32px,4.5vw,66px);
-          font-weight:400; line-height:1.05; letter-spacing:-0.03em; color:#fff; margin:0;
+           font-size: clamp(32px, 4.5vw, 66px);
+          font-weight: 500; line-height: 1.05;
+           color: #fff; margin: 0; letter-spacing:2.05;
         }
         .ab-marq-wrap {
           position:relative; z-index:1;
@@ -363,7 +361,7 @@ export default function BlogsPage() {
         .ab-marq-dot { font-size:7px; color:rgba(255,255,255,0.4); }
         .bl-hero {
           position:relative; background:#050508;
-          min-height:55vh; display:flex; flex-direction:column;
+          min-height:100vh; display:flex; flex-direction:column;
           justify-content:center; overflow:hidden; padding-top:68px;
         }
         .bl-hero-ghost {
@@ -374,12 +372,12 @@ export default function BlogsPage() {
           pointer-events:none; z-index:0; user-select:none; letter-spacing:-0.05em;
         }
         .bl-hero-h1 {
-          font-size:clamp(52px,11vw,118px); font-weight:400; line-height:0.95;
-          letter-spacing:-0.04em; color:#fff; margin:0; display:block;
+          font-size:clamp(75px,8.5vw,115px); font-weight:400; line-height:0.94;
+          letter-spacing:0.01em; color:#fff; margin:0; display:block;
         }
         .bl-section {
           position:relative; background:#050508;
-          padding:90px 7vw 120px; border-top:1px solid rgba(255,255,255,0.06);
+          padding:90px 7vw 120px;
           overflow:hidden;
         }
         .bl-orb--grid {
@@ -390,11 +388,11 @@ export default function BlogsPage() {
         .bl-section-head { margin-bottom:56px; }
         .bl-featured {
           display:grid; grid-template-columns:1.1fr 1fr; gap:1px;
-          background:rgba(255,255,255,0.06);
+          background:rgba(255,255,255,0.0);
           margin-bottom:72px; cursor:pointer; overflow:hidden; transition:background 0.3s;
         }
-        .bl-featured:hover { background:rgba(255,255,255,0.08); }
-        .bl-featured-img-wrap { position:relative; overflow:hidden; min-height:460px; }
+        .bl-featured:hover { background:rgba(255,255,255,0.0); }
+        .bl-featured-img-wrap { position:relative; overflow:hidden; min-height:460px; border-radius:20px; }
         .bl-featured-img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s ease; }
         .bl-featured:hover .bl-featured-img { transform:scale(1.04); }
         .bl-featured-img-overlay {
@@ -402,22 +400,22 @@ export default function BlogsPage() {
           background:linear-gradient(135deg, rgba(5,5,8,0.35) 0%, transparent 60%);
         }
         .bl-featured-content {
-          background:#050508; padding:48px 44px;
+           padding:48px 44px;
           display:flex; flex-direction:column; justify-content:center;
         }
         .bl-featured-top { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
         .bl-featured-badge {
-          font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.22em;
-          text-transform:uppercase; color:rgba(255,255,255,0.5); border-radius:999px;
-          border:1px solid rgba(255,255,255,0.3); padding:4px 10px;
+          font-size:12px; letter-spacing:0.1em;
+           color:rgba(255,255,255,1); border-radius:999px;
+          border:1px solid rgba(255,255,255,0.6); padding:4px 10px;
         }
         .bl-featured-title {
-          font-size:clamp(20px,2.4vw,32px); font-weight:400; line-height:1.18;
-          letter-spacing:-0.025em; color:#fff; margin:0 0 18px;
+          font-size:clamp(20px,2.4vw,40px); font-weight:500; line-height:1.18;
+          letter-spacing:-0.015em; color:#fff; margin:0 0 18px;
         }
         .bl-featured-excerpt {
-          font-size:15px; line-height:1.78; font-weight:300;
-          color:rgba(255,255,255,0.45); margin:0 0 32px; max-width:46ch;
+          font-size:16px; line-height:1.78; font-weight:300;
+          color:rgba(255,255,255,0.8); margin:0 0 32px; max-width:46ch;
         }
         .bl-featured-meta {
           display:flex; justify-content:space-between; align-items:center;
@@ -426,52 +424,51 @@ export default function BlogsPage() {
         }
         .bl-read-btn {
           display:inline-flex; align-items:center;
-          padding:14px 32px; background:#fff; color:#050508; border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.18em;
-          text-transform:uppercase; font-weight:500; align-self:flex-start;
-          transition:background 0.25s, transform 0.2s;
+          padding:10px 20px;  color:#fff; cursor:pointer;
+          font-size:16px; letter-spacing:0.18em;
+          font-weight:500; align-self:flex-start;
+          transition:background 0.25s, transform 0.2s;border: solid 1px rgba(256,256,256,1);border-radius:999px;
         }
-        .bl-read-btn:hover { background:#298dff; color:#fff; transform:translateY(-1px); }
+        .bl-read-btn:hover { background:#fff; color:#000; }
         .bl-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:48px; }
         .bl-filter-pill {
-          padding:8px 18px; border:1px solid rgba(255,255,255,0.12); border-radius:999px;
-          background:transparent; color:rgba(255,255,255,0.4);
-           font-size:11px; letter-spacing:0.12em; font-weight:600;
-          text-transform:uppercase; cursor:pointer; transition:all 0.22s;
+          padding:8px 18px; border:1px solid rgba(255,255,255,0.6); border-radius:999px;
+          background:transparent; color:rgba(255,255,255,0.8);
+           font-size:13px; letter-spacing:0.08em; font-weight:600;
+           cursor:pointer; transition:all 0.3s;
         }
-        .bl-filter-pill:hover { border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.75); }
-        .bl-filter-pill--on { background:#298dff; border-color:#298dff; color:#fff; }
+        .bl-filter-pill:hover { border-color:rgba(255,255,255,0.8); color:rgba(255,255,255,1); }
+        .bl-filter-pill--on { background:#fff; border-color:#fff; color:#000; }
         .bl-cat-pill {
-           font-size:10px; letter-spacing:0.18em;
-          text-transform:uppercase; color:#fcfcf7;font-weight:600;
-          background:var(--cat,#298dff); border-radius:999px;
-          padding:4px 12px; display:inline-block;
+           font-size:12px; letter-spacing:0.05em; background:rgba(256,256,256,1);
+           color:rgba(0,0,0,1); border-radius:999px; font-weight:500;
+          border:1px solid rgba(255,255,255,0.6); padding:4px 10px;
         }
         .bl-cat-pill--card { position:absolute; top:16px; left:16px; z-index:2; }
         .bl-grid {
           display:grid; grid-template-columns:repeat(3,1fr);
-          gap:1px; background:rgba(255,255,255,0.06);
+          gap:10px; background:rgba(255,255,255,0.01); padding:10px; border-radius:20px;
         }
         .bl-card {
-          position:relative; background:#050508; overflow:hidden;
+          position:relative; background:#050508; overflow:hidden; border-radius:10px;
           cursor:pointer; display:flex; flex-direction:column; transition:background 0.3s;
         }
-        .bl-card:hover { background:rgba(255,255,255,0.022); }
+        .bl-card:hover { background:rgba(0,0,0,1); }
         .bl-card-img-wrap { position:relative; overflow:hidden; height:220px; flex-shrink:0; }
         .bl-card-img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s ease; }
-        .bl-card:hover .bl-card-img { transform:scale(1.06); }
+        
         .bl-card-img-overlay {
           position:absolute; inset:0;
           background:linear-gradient(to bottom, transparent 40%, rgba(5,5,8,0.5) 100%);
         }
         .bl-card-body { padding:28px 24px 24px; display:flex; flex-direction:column; flex:1; }
         .bl-card-title {
-          font-size:clamp(15px,1.4vw,19px); font-weight:400; line-height:1.3;
-          letter-spacing:-0.02em; color:#fff; margin:0 0 12px;
+          font-size:clamp(15px,1.4vw,22px); font-weight:400; line-height:1.3;
+          letter-spacing:0.005em; color:#fff; margin:0 0 12px;
         }
         .bl-card-excerpt {
-          font-size:13px; line-height:1.72; font-weight:300;
-          color:rgba(255,255,255,0.5); margin:0 0 auto; flex:1;
+          font-size:14px; line-height:1.72; font-weight:300;
+          color:rgba(255,255,255,0.8); margin:0 0 auto; flex:1;
           display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
         }
         .bl-card-footer {
@@ -481,8 +478,8 @@ export default function BlogsPage() {
         }
         .bl-card-meta { display:flex; align-items:center; gap:6px; }
         .bl-card-bar {
-          position:absolute; bottom:0; left:0; width:0; height:1px;
-          background:#298dff; transition:width 0.45s ease;
+          position:absolute; bottom:0; left:0; width:0; height:2px;
+          background:#fff; transition:width 0.45s ease;
         }
         .bl-card:hover .bl-card-bar { width:100%; }
         .bl-author-row { display:flex; align-items:center; gap:12px; }
@@ -494,13 +491,13 @@ export default function BlogsPage() {
           font-family:'Syne',sans-serif; font-size:14px; font-weight:600; color:#298dff;
         }
         .bl-author-avatar--sm { width:35px; height:35px; font-size:15px; }
-        .bl-author-name { font-size:13px; font-weight:400; color:rgba(255,255,255,0.7); margin:0 0 2px; }
+        .bl-author-name { font-size:15px; font-weight:400; color:rgba(255,255,255,0.8); margin:0 0 2px; }
         .bl-author-name--sm { font-size:14px; }
         .bl-author-role {
-          font-size:12px; color:rgba(255,255,255,0.4); margin:0;
+          font-size:13px; color:rgba(255,255,255,0.6); margin:0;
           font-family:'DM Sans',sans-serif; letter-spacing:0.05em;
         }
-        .bl-date, .bl-read-time { font-size:12px; letter-spacing:0.1em; color:rgba(255,255,255,0.4); }
+        .bl-date, .bl-read-time { font-size:13px;  color:rgba(255,255,255,0.6); }
         .bl-sep { color:rgba(255,255,255,0.2); font-size:10px; }
         .bl-meta-right { display:flex; align-items:center; gap:6px; }
         @media (max-width:1100px) {

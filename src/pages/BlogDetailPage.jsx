@@ -69,8 +69,8 @@ export default function BlogDetailPage() {
         .bd-back {
           display:inline-flex; align-items:center; gap:8px;
           background:none; border:none; cursor:pointer;
-          color:rgba(255,255,255,0.4); 
-          font-size:13px; letter-spacing:0.1em;
+          color:rgba(255,255,255,0.8); 
+          font-size:14px; letter-spacing:0.08em;
           padding:0; transition:color 0.22s; margin-bottom:48px;
         }
         .bd-back:hover { color:#fff; }
@@ -89,13 +89,13 @@ export default function BlogDetailPage() {
           flex-wrap:wrap; margin-bottom:28px;
         }
         .bd-cat-pill {
-          font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.18em;
-          text-transform:uppercase; color:#fcfcf7;
-          background:var(--cat,#298dff); border-radius:999px; padding:4px 12px;
+          font-size:12px; letter-spacing:0.1em;
+          color:#000;font-weight:500;
+          background:#fcfcf7; border-radius:999px; padding:4px 12px;
         }
         .bd-date, .bd-read-time {
-          font-size:12px; letter-spacing:0.1em; color:rgba(255,255,255,0.4);
-          font-family:'DM Sans',sans-serif;
+          font-size:12px; letter-spacing:0.1em; color:rgba(255,255,255,0.8);
+          
         }
         .bd-sep { color:rgba(255,255,255,0.2); font-size:10px; }
 
@@ -113,41 +113,41 @@ export default function BlogDetailPage() {
           display:flex; align-items:center; justify-content:center;
           font-family:'Syne',sans-serif; font-size:16px; font-weight:600; color:#298dff;
         }
-        .bd-author-name { font-size:14px; font-weight:400; color:rgba(255,255,255,0.75); margin:0 0 3px; }
+        .bd-author-name { font-size:15px; font-weight:400; color:rgba(255,255,255,1); margin:0 0 3px; }
         .bd-author-role {
-          font-size:12px; color:rgba(255,255,255,0.4); margin:0;
+          font-size:13px; color:rgba(255,255,255,0.6); margin:0;
           font-family:'DM Sans',sans-serif; letter-spacing:0.05em;
         }
 
         /* Divider */
-        .bd-divider { width:100%; height:1px; background:rgba(255,255,255,0.07); margin-bottom:44px; }
+        .bd-divider { width:100%; height:1px; background:rgba(255,255,255,0.1); margin-bottom:44px; }
 
         /* Body */
         .bd-body { display:flex; flex-direction:column; }
         .bd-para {
           font-size:clamp(15px,1.2vw,17px); line-height:1.9; font-weight:300;
-          color:rgba(255,255,255,0.65); margin:0 0 28px;
+          color:rgba(255,255,255,1); margin:0 0 28px;
         }
         .bd-para:last-child { margin-bottom:0; }
 
         /* Related / back strip */
         .bd-footer-strip {
-          border-top:1px solid rgba(255,255,255,0.07);
+          border-top:1px solid rgba(255,255,255,0.1);
           padding:48px 7vw; text-align:center;
           background:#050508;
         }
         .bd-footer-strip p {
-          font-size:14px; color:rgba(255,255,255,0.3);
+          font-size:15px; color:rgba(255,255,255,0.8);
            margin:0 0 20px;
-          letter-spacing:0.1em; t
+          letter-spacing:0.08em; t
         }
         .bd-back-btn {
           display:inline-flex; align-items:center; gap:10px;
-          padding:14px 36px; background:#fff; color:#050508; border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.18em;
-          text-transform:uppercase; font-weight:500; transition:background 0.25s;
+          padding:12px 30px;  color:#fff; border:1px solid rgba(256,256,256,1); cursor:pointer;
+          font-size:16px; letter-spacing:0.18em; border-radius:999px;
+          font-weight:500; transition:background 0.25s;
         }
-        .bd-back-btn:hover { background:#298dff; color:#fff; }
+        .bd-back-btn:hover { background:#fff; color:#000; }
 
         @media (max-width:768px) {
           .bd-content { padding:40px 6vw 80px; }
@@ -166,17 +166,17 @@ export default function BlogDetailPage() {
 
         {/* Article content */}
         <div ref={contentRef} className="bd-content" style={{ position: "relative" }}>
-          <div className="bd-grid-bg" />
-          <div className="bd-grain" />
+          {/* <div className="bd-grid-bg" /> */}
+          {/* <div className="bd-grain" /> */}
 
           <div style={{ position: "relative", zIndex: 1 }}>
             {/* Back */}
-            <button className="bd-back bd-animate" onClick={() => navigate(-1)}>
+            {/* <button className="bd-back bd-animate" onClick={() => navigate(-1)}>
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
                 <path d="M13 5H1M1 5L5 1M1 5L5 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Back to journal
-            </button>
+            </button> */}
 
             {/* Meta */}
             <div className="bd-meta-row bd-animate">
